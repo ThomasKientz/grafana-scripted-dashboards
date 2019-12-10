@@ -1,4 +1,4 @@
-/* global _ */
+const title = require("./lib")
 
 /*
  * Complex scripted dashboard
@@ -13,14 +13,11 @@
 
 'use strict';
 
-// accessible variables in this scope
-var window, document, ARGS, $, jQuery, moment, kbn;
+// accessible variables in this scope :
+// ARGS, window, document, $, jQuery, moment, kbn, _
 
 // Setup some variables
 var dashboard;
-
-// All url parameters are available via the ARGS object
-var ARGS;
 
 // Initialize a skeleton with nothing but a rows array and service object
 dashboard = {
@@ -28,7 +25,7 @@ dashboard = {
 };
 
 // Set a title
-dashboard.title = 'Scripted dash';
+dashboard.title = title;
 
 // Set default time
 // time can be overridden in the url using from/to parameters, but this is
@@ -85,5 +82,4 @@ for (var i = 0; i < rows; i++) {
   });
 }
 
-
-return dashboard;
+module.exports = dashboard;
