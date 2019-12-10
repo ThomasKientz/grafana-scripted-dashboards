@@ -1,3 +1,5 @@
+const title = require("../lib")
+
 /*
  * Complex scripted dashboard
  * This script generates a dashboard object that Grafana can load. It also takes a number of user
@@ -14,8 +16,8 @@
 
 'use strict';
 
-// accessible variables in this scope
-// var window, document, ARGS, $, jQuery, moment, kbn;
+// accessible variables in this scope :
+// ARGS, window, document, $, jQuery, moment, kbn, _
 
 module.exports = function(callback) {
 
@@ -29,7 +31,7 @@ module.exports = function(callback) {
   };
 
   // Set a title
-  dashboard.title = 'Scripted dash';
+  dashboard.title = title + ' async';
 
   // Set default time
   // time can be overridden in the url using from/to parameters, but this is
