@@ -1,12 +1,19 @@
 const path = require("path");
 const ReturnPlugin = require("./return-plugin.js");
-// const TerserPlugin = require("terser-webpack-plugin");
+
+var glob = require("glob");
+const entries = glob.sync("./src/scripts/*.js").reduce((acc, item) => {
+  const path = item.split("/");
+  const name = path.slice(-1)[0] 
+  acc[name] = item;
+  return acc;
+}, {});
 
 module.exports = {
-  entry: "./src/scripted.js",
+  entry: entries,
   output: {
-    filename: "script_webpack.js",
-    path: path.resolve(__dirname, "dist")
+    path: path.resolve(__dirname, "dist"),
+    filename: '[name]'
   },
   stats: {
     errorDetails: true
@@ -14,17 +21,6 @@ module.exports = {
   optimization: {
     minimize: false
   },
-  // optimization: {
-  //   minimizer: [
-  //     new TerserPlugin({
-  //       terserOptions: {
-  //         parse: {
-  //           bare_returns: true
-  //         }
-  //       }
-  //     })
-  //   ]
-  // },
   mode: "production",
   plugins: [new ReturnPlugin()]
 };

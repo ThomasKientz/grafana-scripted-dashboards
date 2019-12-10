@@ -1,4 +1,4 @@
-const title = require("./lib")
+const title = require("../lib")
 
 /*
  * Complex scripted dashboard

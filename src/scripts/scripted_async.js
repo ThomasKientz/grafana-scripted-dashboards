@@ -1,5 +1,3 @@
-/* global _ */
-
 /*
  * Complex scripted dashboard
  * This script generates a dashboard object that Grafana can load. It also takes a number of user
@@ -17,9 +15,9 @@
 'use strict';
 
 // accessible variables in this scope
-var window, document, ARGS, $, jQuery, moment, kbn;
+// var window, document, ARGS, $, jQuery, moment, kbn;
 
-return function(callback) {
+module.exports = function(callback) {
 
   // Setup some variables
   var dashboard;
